@@ -1,45 +1,35 @@
+import { useState } from "react";
 import Input from "./Input";
-import calculateInvestmentResults from "../util/investment";
 
-let data = {
-  initialInvestment: 0,
-  annualInvestment: 0,
-  expectedReturn: 0,
-  duration: 0,
-};
-
-export let updatedData = { ...data };
-
-export default function UserInput() {
-  function handleUserData(e) {
-    let target = e.target.name;
-    updatedData[target] = e.target.value;
-  }
-
+export default function UserInput({ onChangeInput, userData }) {
   return (
     <section id="user-input">
       <div className="input-group">
         <Input
           labelName="Initial Investment"
           name="initialInvestment"
-          handleUserData={handleUserData}
+          value={userData.initialInvestment}
+          onChangeInput={onChangeInput}
         />
         <Input
           labelName="Annual Investment"
           name="annualInvestment"
-          handleUserData={handleUserData}
+          value={userData.annualInvestment}
+          onChangeInput={onChangeInput}
         />
       </div>
       <div className="input-group">
         <Input
           labelName="Expected Return"
           name="expectedReturn"
-          handleUserData={handleUserData}
+          value={userData.expectedReturn}
+          onChangeInput={onChangeInput}
         />
         <Input
           labelName="Duration"
           name="duration"
-          handleUserData={handleUserData}
+          value={userData.duration}
+          onChangeInput={onChangeInput}
         />
       </div>
     </section>
